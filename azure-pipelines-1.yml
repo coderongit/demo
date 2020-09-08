@@ -2,6 +2,17 @@
 - task: Maven@3
   inputs:
     mavenPomFile: 'pom.xml'
+    goals: 'build install'
+    publishJUnitResults: true
+    testResultsFiles: '**/surefire-reports/TEST-*.xml'
+    javaHomeOption: 'JDKVersion'
+    mavenVersionOption: 'Default'
+    mavenAuthenticateFeed: false
+    effectivePomSkip: false
+    sonarQubeRunAnalysis: false
+- task: Maven@3
+  inputs:
+    mavenPomFile: 'pom.xml'
     publishJUnitResults: true
     testResultsFiles: 'TEST-*.xml'
     testRunTitle: 'test1'
